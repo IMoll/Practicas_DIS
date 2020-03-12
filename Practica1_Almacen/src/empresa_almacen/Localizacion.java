@@ -16,4 +16,28 @@ public class Localizacion {
 		this.shelf = shelf;
 	}
 	
+	public int getHall() {
+		return hall;
+	}
+	
+	public void setHall(int hall) {
+		this.hall = hall;
+	}
+	
+	public int getShelving() {
+		return shelving;
+	}
+	
+	public void setShelving(int shelving) {
+		this.shelving = shelving;
+	}
+	
+	public int getShelf() {
+		return shelf;
+	}
+	
+	public void setShelf(int shelf) {
+		this.shelf = shelf;
+	}
+	
 }
