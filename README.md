@@ -4,3 +4,4 @@ Prácticas de DIS. Este es el repositorio que usaremos para hacer las prácticas
 Integrantes del grupo:
 Andrea María García Rodríguez
 Ignacio Moll Amorós
+Borja García Lamas
