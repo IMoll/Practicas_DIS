@@ -1,11 +1,15 @@
 package empresa_almacen;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 
 public class main {
@@ -127,7 +131,18 @@ public class main {
 			
 			//Guardar Pedido
 			else if(opcion == 3) {
-				//Guardar Almacen
+				JAXBContext contextObj;
+				Almacen almacen = new Almacen(clientes,productos, pedidos);
+				try {
+					contextObj = JAXBContext.newInstance(Almacen.class);
+				    Marshaller marshallerObj = contextObj.createMarshaller();  
+				    marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
+				    marshallerObj.marshal(almacen, new FileOutputStream("almacen.xml"));  
+					
+				} catch (JAXBException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}  
 				  
 			   
 			}
