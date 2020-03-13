@@ -1,9 +1,14 @@
 package empresa_almacen;
 
+import javax.xml.bind.annotation.XmlAttribute;  
+import javax.xml.bind.annotation.XmlElement;  
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+@XmlRootElement
 public class Pedidos {
 
 	ArrayList<Producto> products = new ArrayList<Producto>();
@@ -27,7 +32,7 @@ public class Pedidos {
 		this.estimated_date = estimated_date;
 	}
 	
-	
+	@XmlElement
 	public ArrayList<Producto> getProducts() {
 		return products;
 	}
@@ -36,7 +41,7 @@ public class Pedidos {
 		this.products = products;
 	}
 	
-	
+	@XmlElement
 	public ArrayList<Integer> getQuantity() {
 		return quantity;
 	}
@@ -45,7 +50,7 @@ public class Pedidos {
 		this.quantity = quantity;
 	}
 	
-
+	@XmlElement
 	public Direccion getDelivery_address() {
 		return delivery_address;
 	}
@@ -54,7 +59,7 @@ public class Pedidos {
 		this.delivery_address = delivery_address;
 	}
 
-	
+	@XmlElement
 	public Clientes getClient() {
 		return client;
 	}
@@ -63,7 +68,7 @@ public class Pedidos {
 		this.client = client;
 	}
 
-
+	@XmlElement
 	public Date getEstimated_date() {
 		return estimated_date;
 	}
@@ -72,7 +77,7 @@ public class Pedidos {
 		this.estimated_date = estimated_date;
 	}
 
-	
+	@XmlElement
 	public String getDestinatario() {
 		return destinatario;
 	}
