@@ -212,15 +212,17 @@ public class main {
 			System.out.println("Numero de la calle");
 			leido = in.readLine();
 		}
-		cliente_aux.getDireccion().setNumber(Integer.parseUnsignedInt(in.readLine()));
+		cliente_aux.getDireccion().setNumber(Integer.parseUnsignedInt(leido));
 		
 		System.out.println("Codigo postal");
 		leido = in.readLine();
 		while(!tryParseInt(leido)) {
-			System.out.println("Codigo postal");
-			leido = in.readLine();
+			if(!tryParseInt(leido)) {
+				System.out.println("Codigo postal");
+				leido = in.readLine();
+			}
 		}
-		cliente_aux.getDireccion().setPostal_code(Integer.parseUnsignedInt(in.readLine()));
+		cliente_aux.getDireccion().setPostal_code(Integer.parseUnsignedInt(leido));
 		
 		System.out.println("Poblacion");
 		cliente_aux.getDireccion().setPopulation(in.readLine());
@@ -232,12 +234,16 @@ public class main {
 		clientes.add(cliente_aux);
 	}
 	
+	
+	
+	//Control de errores. Es un entero unsigned?
 	public static boolean tryParseInt(String value) {  
 	     try {  
-	         Integer.parseInt(value);  
+	         Integer.parseUnsignedInt(value);  
 	         return true;  
 	      } catch (NumberFormatException e) {  
 	         return false;  
 	      }  
 	}
+	
 }
