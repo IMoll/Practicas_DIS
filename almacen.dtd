@@ -1,0 +1,56 @@
+<!ELEMENT almacen (clientes*,pedidos*,products*)>
+
+<!ELEMENT clientes (direccion*, email, name, phone_number, surname)>
+<!ELEMENT direccion (country*, number*, population*, postal_code*, street*)>
+<!ELEMENT country (#PCDATA)> 
+<!ELEMENT number (#PCDATA)> 
+<!ELEMENT population (#PCDATA)> 
+<!ELEMENT postal_code (#PCDATA)> 
+<!ELEMENT street (#PCDATA)> 
+ 
+<!ELEMENT pedidos (client, delivery_address, destinatario, estimated_date, products*, quantity)>
+
+<!ELEMENT client (direccion*, email, name, phone_number, surname)>
+<!ELEMENT direccion (country*, number*, population*, postal_code*, street*)> 
+<!ELEMENT country (#PCDATA)> 
+<!ELEMENT number (#PCDATA)> 
+<!ELEMENT population (#PCDATA)> 
+<!ELEMENT postal_code (#PCDATA)> 
+<!ELEMENT street (#PCDATA)> 
+<!ELEMENT email (#PCDATA)> 
+<!ELEMENT name (#PCDATA)> 
+<!ELEMENT phone_number (#PCDATA)> 
+<!ELEMENT surname (#PCDATA)> 
+
+<!ELEMENT delivery_address (country*, number*, population*, postal_code*, street*)>
+<!ELEMENT country (#PCDATA)> 
+<!ELEMENT number (#PCDATA)> 
+<!ELEMENT population (#PCDATA)> 
+<!ELEMENT postal_code (#PCDATA)> 
+<!ELEMENT street (#PCDATA)> 
+<!ELEMENT destinatario (#PCDATA)>
+<!ELEMENT estimated_date (#PCDATA)>
+
+<!ELEMENT products (code*, description*, localizacion*, name*, pending*, stock*)>
+<!ELEMENT code (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT localizacion (hall*, shelf*, shelving*)>
+<!ELEMENT hall (#PCDATA)>
+<!ELEMENT shelf (#PCDATA)>
+<!ELEMENT shelving (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT pending (#PCDATA)>
+<!ELEMENT stock (#PCDATA)>
+
+<!ELEMENT quantity (#PCDATA)>
+
+<!ELEMENT products (code, description, localizacion, name, pending, stock*)>
+<!ELEMENT code (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT localizacion (hall, shelf, shelving)>
+<!ELEMENT hall (#PCDATA)>
+<!ELEMENT shelf (#PCDATA)>
+<!ELEMENT shelving (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT pending (#PCDATA)>
+<!ELEMENT stock (#PCDATA)>
