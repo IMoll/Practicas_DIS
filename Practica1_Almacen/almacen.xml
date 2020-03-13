@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<almacen>
+    <clientes>
+        <direccion>
+            <country>Mexico wee</country>
+            <number>23</number>
+            <population>Mexico</population>
+            <postal_code>232323</postal_code>
+            <street>Paseo de </street>
+        </direccion>
+        <email>woejw@geo</email>
+        <name>yo</name>
+        <phone_number>333</phone_number>
+        <surname>el mejor</surname>
+    </clientes>
+    <pedidos>
+        <client>
+            <direccion>
+                <country>Mexico wee</country>
+                <number>23</number>
+                <population>Mexico</population>
+                <postal_code>232323</postal_code>
+                <street>Paseo de </street>
+            </direccion>
+            <email>woejw@geo</email>
+            <name>yo</name>
+            <phone_number>333</phone_number>
+            <surname>el mejor</surname>
+        </client>
+        <delivery_address>
+            <country>Mexico wee</country>
+            <number>23</number>
+            <population>Mexico</population>
+            <postal_code>232323</postal_code>
+            <street>Paseo de </street>
+        </delivery_address>
+        <destinatario>yo</destinatario>
+        <estimated_date>2020-03-13T11:35:17.649+01:00</estimated_date>
+        <products>
+            <code>2345</code>
+            <description>cafelate</description>
+            <localizacion>
+                <hall>0</hall>
+                <shelf>0</shelf>
+                <shelving>0</shelving>
+            </localizacion>
+            <name>Cafe</name>
+            <pending>0</pending>
+            <stock>0</stock>
+        </products>
+        <quantity>1</quantity>
+    </pedidos>
+    <products>
+        <code>2345</code>
+        <description>cafelate</description>
+        <localizacion>
+            <hall>0</hall>
+            <shelf>0</shelf>
+            <shelving>0</shelving>
+        </localizacion>
+        <name>Cafe</name>
+        <pending>0</pending>
+        <stock>0</stock>
+    </products>
+</almacen>
