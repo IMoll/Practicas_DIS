@@ -1,5 +1,10 @@
 package empresa_almacen;
 
+import javax.xml.bind.annotation.XmlAttribute;  
+import javax.xml.bind.annotation.XmlElement;  
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Clientes {
 	
 	
@@ -23,14 +28,15 @@ public class Clientes {
 		
 	}
 	
-
+	@XmlElement
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@XmlElement
 	public String getSurname() {
 		return surname;
 	}
@@ -38,6 +44,7 @@ public class Clientes {
 		this.surname = surname;
 	}
 	
+	@XmlElement
 	public String getEmail() {
 		return email;
 	}
@@ -45,19 +52,19 @@ public class Clientes {
 		this.email = email;
 	}
 	
+	@XmlElement
 	public String getPhone_number() {
 		return phone_number;
 	}
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-
+	
+	@XmlElement
 	public Direccion getDireccion() {
 		return direccion;
 	}
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-
-
 }
