@@ -1,5 +1,10 @@
 package empresa_almacen;
 
+import javax.xml.bind.annotation.XmlAttribute;  
+import javax.xml.bind.annotation.XmlElement;  
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Direccion {
 	
 	private String street;
@@ -8,7 +13,7 @@ public class Direccion {
 	private String population;
 	private String country;
 	
-	
+	@XmlElement
 	public String getStreet() {
 		return street;
 	}
@@ -17,7 +22,7 @@ public class Direccion {
 		this.street = street;
 	}
 	
-	
+	@XmlElement	
 	public int getNumber() {
 		return number;
 	}
@@ -26,7 +31,7 @@ public class Direccion {
 		this.number = number;
 	}
 
-	
+	@XmlElement
 	public int getPostal_code() {
 		return postal_code;
 	}
@@ -35,7 +40,7 @@ public class Direccion {
 		this.postal_code = postal_code;
 	}
 
-	
+	@XmlElement
 	public String getPopulation() {
 		return population;
 	}
@@ -44,7 +49,7 @@ public class Direccion {
 		this.population = population;
 	}
 
-	
+	@XmlElement
 	public String getCountry() {
 		return country;
 	}
