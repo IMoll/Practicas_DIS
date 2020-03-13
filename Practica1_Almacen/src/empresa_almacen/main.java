@@ -16,7 +16,7 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		int opcion = 1;
-		
+		String leido = "";
 		ArrayList<Pedidos> pedidos = new ArrayList<Pedidos>();
 		
 		ArrayList<Clientes> clientes = new ArrayList<Clientes>();
@@ -34,7 +34,13 @@ public class main {
 			System.out.println("4:Insertar Producto");
 			System.out.println("5:Insertar Cliente");
 			System.out.println("0:Salir");
-			opcion = Integer.parseUnsignedInt(in.readLine());	
+			//Leemos por pantalla
+			leido = in.readLine();
+			while(!tryParseInt(leido)) {
+				System.out.println("Introduzca un valor numérico, por favor.");
+				leido = in.readLine();
+			}
+			opcion = Integer.parseUnsignedInt(leido);	
 			//Realizar un nuevo Pedido
 			if(opcion == 1) {
 				RealizarNuevoPedido(in, num_productos, fecha_estimada, pedidos, clientes, productos);
@@ -64,11 +70,11 @@ public class main {
 			}
 
 			else if(opcion == 4) {
-				CrearProducto(productos);
+				CrearProducto(in, productos);
 			}
 			
 			else if(opcion == 5) {
-				CrearCliente(in,clientes);
+				CrearCliente(in, clientes);
 			}
 			
 			else if(opcion == 0) {
@@ -179,8 +185,78 @@ public class main {
 		
 	}
 	
-	public static void CrearProducto(ArrayList<Producto> productos) {
+	public static void CrearProducto(BufferedReader in, ArrayList<Producto> productos) throws NumberFormatException, IOException {
+		Producto producto_aux = new Producto();	
+		String leido = "";
 		
+		System.out.println("Introduzca el codigo del producto");
+		leido = in.readLine();
+		while(!tryParseInt(leido)) {
+			System.out.println("Introduzca el codigo del producto");
+			leido = in.readLine();
+		}
+		producto_aux.setCode(Integer.parseInt(leido));
+		
+		System.out.println("Introduzca el nombre del producto");
+		producto_aux.setName(in.readLine());
+		
+		System.out.println("Introduzca la descripcion del producto");
+		producto_aux.setDescription(in.readLine());
+		
+		System.out.println("Esta en stock?\n0:NO\t1:SI");
+		leido = in.readLine();
+		while(!tryParseInt(leido)) {
+			System.out.println("Esta en stock?\n0:NO\t1:SI");
+			leido = in.readLine();
+		}
+		producto_aux.setStock(Integer.parseUnsignedInt(leido));
+		
+		//Control errores while
+		if(producto_aux.getStock() == 1) {
+			producto_aux.setLocalizacion(new Localizacion());
+			
+			System.out.println("Esta en el pasillo?\n0:NO\t1:SI");
+			leido = in.readLine();
+			while(!tryParseInt(leido)) {
+				System.out.println("Esta en el pasillo?\n0:NO\t1:SI");
+				leido = in.readLine();
+			}
+			producto_aux.getLocalizacion().setHall(Integer.parseUnsignedInt(leido));
+			
+			System.out.println("Esta en una estanteria?\n0:NO\t1:SI");
+			leido = in.readLine();
+			while(!tryParseInt(leido)) {
+				System.out.println("Esta en una estanteria?\n0:NO\t1:SI");
+				leido = in.readLine();
+			}
+			producto_aux.getLocalizacion().setShelf(Integer.parseUnsignedInt(leido));
+			
+			System.out.println("Esta en un estante?\n0:NO\t1:SI");
+			leido = in.readLine();
+			while(!tryParseInt(leido)) {
+				System.out.println("Esta en un estante?\n0:NO\t1:SI");
+				leido = in.readLine();
+			}
+			producto_aux.getLocalizacion().setShelving(Integer.parseUnsignedInt(leido));
+			
+		}
+		else {
+			producto_aux.setLocalizacion(new Localizacion());
+			producto_aux.getLocalizacion().setHall(0);
+			producto_aux.getLocalizacion().setShelf(0);
+			producto_aux.getLocalizacion().setShelving(0);
+		}
+		
+		System.out.println("Esta Pendiente?\n0:NO\t1:SI");
+		leido = in.readLine();
+		while(!tryParseInt(leido)) {
+			System.out.println("Esta Pendiente?\n0:NO\t1:SI");
+			leido = in.readLine();
+		}
+		producto_aux.setPending(Integer.parseUnsignedInt(leido));
+		
+		//Anyadir Producto					
+		productos.add(producto_aux);
 	}
 	
 	public static void CrearCliente(BufferedReader in,ArrayList<Clientes> clientes) throws IOException {
@@ -233,8 +309,6 @@ public class main {
 		//Insertamos al cliente.
 		clientes.add(cliente_aux);
 	}
-	
-	
 	
 	//Control de errores. Es un entero unsigned?
 	public static boolean tryParseInt(String value) {  
