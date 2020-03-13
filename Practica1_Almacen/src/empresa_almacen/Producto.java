@@ -1,5 +1,10 @@
 package empresa_almacen;
 
+import javax.xml.bind.annotation.XmlAttribute;  
+import javax.xml.bind.annotation.XmlElement;  
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Producto {
 	
 	private int code;
@@ -23,7 +28,7 @@ public class Producto {
 		this.pending = pending;
 	}
 	
-	
+	@XmlElement
 	public int getCode() {
 		return code;
 	}
@@ -32,7 +37,7 @@ public class Producto {
 		this.code = code;
 	}
 
-	
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -41,7 +46,7 @@ public class Producto {
 		this.name = name;
 	}
 
-	
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
@@ -50,7 +55,7 @@ public class Producto {
 		this.description = description;
 	}
 
-	
+	@XmlElement
 	public int getStock() {
 		return stock;
 	}
@@ -59,7 +64,7 @@ public class Producto {
 		this.stock = stock;
 	}
 
-	
+	@XmlElement
 	public Localizacion getLocalizacion() {
 		return localizacion;
 	}
@@ -68,7 +73,7 @@ public class Producto {
 		this.localizacion = localizacion;
 	}
 
-	
+	@XmlElement
 	public int getPending() {
 		return pending;
 	}
@@ -76,7 +81,4 @@ public class Producto {
 	public void setPending(int pending) {
 		this.pending = pending;
 	}
-
-
-
 }
