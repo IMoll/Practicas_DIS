@@ -1,7 +1,6 @@
 package empresa_almacen;
 
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -13,7 +12,13 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		int opcion = 1;
+		
 		ArrayList<Pedidos> pedidos = new ArrayList<Pedidos>();
+		
+		ArrayList<Clientes> clientes = new ArrayList<Clientes>();
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		
 		int num_productos = 0;
 		java.io.BufferedReader in = new BufferedReader (new InputStreamReader(System.in));
 		Calendar fecha_estimada = Calendar.getInstance();
@@ -48,11 +53,18 @@ public class main {
 						pedido_aux.products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
 						System.out.println("Esta en un estante?\n0:NO\t1:SI");
 						pedido_aux.products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));						
+					}else {
+						pedido_aux.products.get(i).setLocalizacion(new Localizacion());
+						pedido_aux.products.get(i).getLocalizacion().setHall(0);
+						pedido_aux.products.get(i).getLocalizacion().setShelf(0);
+						pedido_aux.products.get(i).getLocalizacion().setShelving(0);
 					}
 					System.out.println("Esta Pendiente?\n0:NO\t1:SI");
 					pedido_aux.products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
 					System.out.println("Cantidad?");
 					pedido_aux.quantity.add(Integer.parseUnsignedInt(in.readLine()));
+					//Anyadir Producto					
+					productos.add(pedido_aux.getProducts().get(i));
 				}
 
 				System.out.println("Introduzca el nombre del cliente");
@@ -76,6 +88,11 @@ public class main {
 				pedido_aux.getClient().getDireccion().setPopulation(in.readLine());
 				System.out.println("Pais");
 				pedido_aux.getClient().getDireccion().setCountry(in.readLine());
+								
+				//AnyadirCliente
+				clientes.add(pedido_aux.getClient());
+				
+				
 				System.out.println("Es la misma direccion que la direccion de entrega?\n0:NO\t1:SI");
 				int respuesta = Integer.parseUnsignedInt(in.readLine());
 				if(respuesta == 0) {
@@ -109,7 +126,7 @@ public class main {
 			
 			//Guardar Pedido
 			else if(opcion == 3) {
-
+				//Guardar Almacen
 				  
 			   
 			}

@@ -1,7 +1,5 @@
 package empresa_almacen;
 
-
-
 public class Direccion {
 	
 	private String street;
