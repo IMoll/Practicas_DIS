@@ -2,64 +2,61 @@
 <almacen>
     <clientes>
         <direccion>
-            <country>Mexico wee</country>
             <number>23</number>
-            <population>Mexico</population>
-            <postal_code>232323</postal_code>
-            <street>Paseo de </street>
+            <population>es</population>
+            <postal_code>343</postal_code>
+            <street>pas</street>
         </direccion>
-        <email>woejw@geo</email>
-        <name>yo</name>
-        <phone_number>333</phone_number>
-        <surname>el mejor</surname>
+        <email>ewfgwe</email>
+        <name>carlos</name>
+        <phone_number>343</phone_number>
+        <surname>tendero</surname>
     </clientes>
     <pedidos>
         <client>
             <direccion>
-                <country>Mexico wee</country>
                 <number>23</number>
-                <population>Mexico</population>
-                <postal_code>232323</postal_code>
-                <street>Paseo de </street>
+                <population>es</population>
+                <postal_code>343</postal_code>
+                <street>pas</street>
             </direccion>
-            <email>woejw@geo</email>
-            <name>yo</name>
-            <phone_number>333</phone_number>
-            <surname>el mejor</surname>
+            <email>ewfgwe</email>
+            <name>carlos</name>
+            <phone_number>343</phone_number>
+            <surname>tendero</surname>
         </client>
         <delivery_address>
-            <country>Mexico wee</country>
             <number>23</number>
-            <population>Mexico</population>
-            <postal_code>232323</postal_code>
-            <street>Paseo de </street>
+            <population>es</population>
+            <postal_code>343</postal_code>
+            <street>pas</street>
         </delivery_address>
-        <destinatario>yo</destinatario>
-        <estimated_date>2020-03-13T11:35:17.649+01:00</estimated_date>
+        <destinatario>efe</destinatario>
+        <estimated_date>2020-03-13T15:11:26.071+01:00</estimated_date>
         <products>
-            <code>2345</code>
-            <description>cafelate</description>
+            <code>11</code>
+            <description>ww</description>
             <localizacion>
-                <hall>0</hall>
-                <shelf>0</shelf>
-                <shelving>0</shelving>
+                <hall>1</hall>
+                <shelf>1</shelf>
+                <shelving>1</shelving>
             </localizacion>
-            <name>Cafe</name>
-            <pending>0</pending>
-            <stock>0</stock>
+            <name>1</name>
+            <pending>1</pending>
+            <stock>1</stock>
         </products>
         <quantity>1</quantity>
     </pedidos>
     <products>
-        <code>2345</code>
-        <description>cafelate</description>
+        <code>11</code>
+        <description>ww</description>
         <localizacion>
-            <hall>0</hall>
-            <shelf>0</shelf>
-            <shelving>0</shelving>
+            <hall>1</hall>
+            <shelf>1</shelf>
+            <shelving>1</shelving>
         </localizacion>
-        <name>Cafe</name>
-        <pending>0</pending>
-        <stock>0</stock>
+        <name>1</name>
+        <pending>1</pending>
+        <stock>1</stock>
     </products>
 </almacen>
