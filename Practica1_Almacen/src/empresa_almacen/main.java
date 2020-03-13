@@ -1,6 +1,7 @@
 package empresa_almacen;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,13 +18,8 @@ public class main {
 	public static void main(String[] args) throws IOException {
 		int opcion = 1;
 		String leido = "";
-		ArrayList<Pedidos> pedidos = new ArrayList<Pedidos>();
-		
-		ArrayList<Clientes> clientes = new ArrayList<Clientes>();
-		
-		ArrayList<Producto> productos = new ArrayList<Producto>();
-		
-		Almacen almacen = new Almacen( clientes, productos, pedidos);
+
+		Almacen almacen = new Almacen( new ArrayList<Clientes>(), new ArrayList<Producto>(), new ArrayList<Pedidos>());
 		
 		int num_productos = 0;
 		java.io.BufferedReader in = new BufferedReader (new InputStreamReader(System.in));
@@ -43,41 +39,34 @@ public class main {
 				leido = in.readLine();
 			}
 			opcion = Integer.parseUnsignedInt(leido);	
+			
 			//Realizar un nuevo Pedido
 			if(opcion == 1) {
 				RealizarNuevoPedido(in, num_productos, fecha_estimada, almacen);
 			}
 			
 			//Recuperar Pedido
+			
 			else if(opcion == 2) {
 				RecuperarPedido();
 			}
 			
-			//Guardar Pedido
+			
 			else if(opcion == 3) {
-	//			Almacen almacen = new Almacen(clientes,productos, pedidos);
-	//			GuardarPedidos();
-				JAXBContext contextObj;
-				
-				try {
-					contextObj = JAXBContext.newInstance(Almacen.class);
-				    Marshaller marshallerObj = contextObj.createMarshaller();  
-				    marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
-				    marshallerObj.marshal(almacen, new FileOutputStream("almacen.xml"));  
-					
-				} catch (JAXBException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}  
-
+				if(almacen.getClientes().size() + almacen.getPedidos().size() + almacen.getProducts().size() == 0) {
+					System.out.println("No hay nada que guardar");
+				}
+				else{
+					GuardarPedidos(almacen);
+				}
 			}
 
 			else if(opcion == 4) {
-				CrearProducto(in, productos);
+				CrearProducto(in, almacen.getProducts());
 			}
 			
 			else if(opcion == 5) {
-				CrearCliente(in, clientes);
+				CrearCliente(in, almacen.getClientes());
 			}
 			
 			else if(opcion == 0) {
@@ -183,8 +172,22 @@ public class main {
 		
 	}
 
-	public static void GuardarPedidos() {
+	
+	
+	public static void GuardarPedidos(Almacen almacen) throws FileNotFoundException {
 		
+		JAXBContext contextObj;
+					
+		try {
+			contextObj = JAXBContext.newInstance(Almacen.class);
+			Marshaller marshallerObj = contextObj.createMarshaller();  
+			marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);  
+			marshallerObj.marshal(almacen, new FileOutputStream("almacen.xml"));  		
+			} 
+		catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
 	}
 	
 	public static void CrearProducto(BufferedReader in, ArrayList<Producto> productos) throws NumberFormatException, IOException {
