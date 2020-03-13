@@ -22,6 +22,7 @@ public class main {
 		int num_productos = 0;
 		java.io.BufferedReader in = new BufferedReader (new InputStreamReader(System.in));
 		Calendar fecha_estimada = Calendar.getInstance();
+		
 		while(opcion != 0) {
 			System.out.println("1:Realizar un nuevo Pedido");
 			System.out.println("2:Recuperar Pedido");
