@@ -1,11 +1,15 @@
 package empresa_almacen;
 
+import javax.xml.bind.annotation.XmlAttribute;  
+import javax.xml.bind.annotation.XmlElement;  
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Localizacion {
 
 	private int hall;
 	private int shelving;
 	private int shelf;
-	
 	
 	public Localizacion() {
 		
@@ -16,6 +20,8 @@ public class Localizacion {
 		this.shelf = shelf;
 	}
 	
+	
+	@XmlElement
 	public int getHall() {
 		return hall;
 	}
@@ -24,6 +30,7 @@ public class Localizacion {
 		this.hall = hall;
 	}
 	
+	@XmlElement
 	public int getShelving() {
 		return shelving;
 	}
@@ -32,6 +39,7 @@ public class Localizacion {
 		this.shelving = shelving;
 	}
 	
+	@XmlElement
 	public int getShelf() {
 		return shelf;
 	}
