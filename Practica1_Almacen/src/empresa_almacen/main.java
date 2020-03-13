@@ -31,6 +31,8 @@ public class main {
 			System.out.println("1:Realizar un nuevo Pedido");
 			System.out.println("2:Recuperar Pedido");
 			System.out.println("3:Guardar Pedidos");
+			System.out.println("4:Insertar Producto");
+			System.out.println("5:Insertar Cliente");
 			System.out.println("0:Salir");
 			opcion = Integer.parseUnsignedInt(in.readLine());	
 			//Realizar un nuevo Pedido
@@ -59,6 +61,14 @@ public class main {
 					e.printStackTrace();
 				}  
 
+			}
+
+			else if(opcion == 4) {
+				CrearProducto(productos);
+			}
+			
+			else if(opcion == 5) {
+				CrearCliente(in,clientes);
 			}
 			
 			else if(opcion == 0) {
@@ -168,5 +178,66 @@ public class main {
 	public static void GuardarPedidos() {
 		
 	}
+	
+	public static void CrearProducto(ArrayList<Producto> productos) {
+		
+	}
+	
+	public static void CrearCliente(BufferedReader in,ArrayList<Clientes> clientes) throws IOException {
 
+		Clientes cliente_aux = new Clientes();	
+		String leido = "";
+		
+		System.out.println("Introduzca el nombre del cliente");
+		cliente_aux.setName(in.readLine());
+		
+		System.out.println("Introduzca los apellidos del cliente");
+		cliente_aux.setSurname(in.readLine());
+		
+		System.out.println("Introduzca el email del cliente");
+		cliente_aux.setEmail(in.readLine());
+		
+		System.out.println("Introduzca el telefono de contacto");
+		cliente_aux.setPhone_number(in.readLine());
+		
+		System.out.println("Introduzca la direccion del cliente");
+		cliente_aux.setDireccion(new Direccion());
+		
+		System.out.println("Introduzca la calle");
+		cliente_aux.getDireccion().setStreet(in.readLine());
+		
+		System.out.println("Numero de la calle");
+		leido = in.readLine();
+		while(!tryParseInt(leido)) {
+			System.out.println("Numero de la calle");
+			leido = in.readLine();
+		}
+		cliente_aux.getDireccion().setNumber(Integer.parseUnsignedInt(in.readLine()));
+		
+		System.out.println("Codigo postal");
+		leido = in.readLine();
+		while(!tryParseInt(leido)) {
+			System.out.println("Codigo postal");
+			leido = in.readLine();
+		}
+		cliente_aux.getDireccion().setPostal_code(Integer.parseUnsignedInt(in.readLine()));
+		
+		System.out.println("Poblacion");
+		cliente_aux.getDireccion().setPopulation(in.readLine());
+		
+		System.out.println("Pais");
+		cliente_aux.getDireccion().setCountry(in.readLine());
+		
+		//Insertamos al cliente.
+		clientes.add(cliente_aux);
+	}
+	
+	public static boolean tryParseInt(String value) {  
+	     try {  
+	         Integer.parseInt(value);  
+	         return true;  
+	      } catch (NumberFormatException e) {  
+	         return false;  
+	      }  
+	}
 }
