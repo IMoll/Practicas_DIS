@@ -1,6 +1,7 @@
 package empresa_almacen;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import javax.xml.bind.Unmarshaller;  
 
 public class main {
 
@@ -26,52 +28,80 @@ public class main {
 		Calendar fecha_estimada = Calendar.getInstance();
 		
 		while(opcion != 0) {
-			System.out.println("1:Realizar un nuevo Pedido");
-			System.out.println("2:Recuperar Pedido");
-			System.out.println("3:Guardar Pedidos");
-			System.out.println("4:Insertar Producto");
-			System.out.println("5:Insertar Cliente");
-			System.out.println("0:Salir");
-			//Leemos por pantalla
-			leido = in.readLine();
-			while(!tryParseInt(leido)) {
-				System.out.println("Introduzca un valor numérico, por favor.");
+			
+			
+			try {
+			
+				System.out.println("1:Realizar un nuevo Pedido");
+				System.out.println("2:Recuperar Pedido");
+				System.out.println("3:Guardar Pedidos");
+				System.out.println("4:Insertar Producto");
+				System.out.println("5:Insertar Cliente");
+				System.out.println("0:Salir");
+				//Leemos por pantalla
 				leido = in.readLine();
-			}
-			opcion = Integer.parseUnsignedInt(leido);	
-			
-			//Realizar un nuevo Pedido
-			if(opcion == 1) {
-				RealizarNuevoPedido(in, num_productos, fecha_estimada, almacen);
-			}
-			
-			//Recuperar Pedido
-			
-			else if(opcion == 2) {
-				RecuperarPedido();
-			}
-			
-			
-			else if(opcion == 3) {
-				if(almacen.getClientes().size() + almacen.getPedidos().size() + almacen.getProducts().size() == 0) {
-					System.out.println("No hay nada que guardar");
+				while(!tryParseInt(leido)) {
+					System.out.println("Introduzca un valor numérico, por favor.");
+					leido = in.readLine();
 				}
-				else{
-					GuardarPedidos(almacen);
+				opcion = Integer.parseUnsignedInt(leido);	
+				
+				//Realizar un nuevo Pedido
+				if(opcion == 1) {
+					RealizarNuevoPedido(in, num_productos, fecha_estimada, almacen);
 				}
+				
+				//Recuperar Pedido
+				
+				else if(opcion == 2) {
+					File xmlFile = new File("almacen.xml");
+					if(xmlFile.exists()) {
+						almacen = RecuperarPedido(almacen, xmlFile);
+					}
+					else {
+						System.out.println("No hay nada que cargar");
+						System.out.println("Se ha cargado correctamente");
+					}					
+				}
+						
+				else if(opcion == 3) {
+					if(almacen.getClientes().size() + almacen.getPedidos().size() + almacen.getProducts().size() == 0) {
+						System.out.println("No hay nada que guardar");
+					}
+					else{
+						GuardarPedidos(almacen);
+						System.out.println("Se han guardado correctamente");
+					}
+				}
+				/*Crear Producto*/
+				else if(opcion == 4) {
+					CrearProducto(in, almacen.getProducts());
+				}
+				/*CrearCliente*/
+				else if(opcion == 5) {
+					CrearCliente(in, almacen.getClientes());
+				}
+				
+				else if(opcion == 0) {
+					System.out.println("Hasta luego");
+				}	
+				
 			}
-
-			else if(opcion == 4) {
-				CrearProducto(in, almacen.getProducts());
+			catch(ArrayIndexOutOfBoundsException e){
+				System.out.println("Error\nPara continuar pulse Intro");
+				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				br.readLine();
 			}
-			
-			else if(opcion == 5) {
-				CrearCliente(in, almacen.getClientes());
+			catch(NumberFormatException e) {
+				System.out.println("Error\nPara continuar pulse Intro");
+				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				br.readLine();
 			}
-			
-			else if(opcion == 0) {
-				System.out.println("Hasta luego");
-			}			
+			catch(OutOfMemoryError e) {
+				System.out.println("Amigo, tienes un problema de memoria, de nada");
+				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				br.readLine();
+			}
 		}
 	}
 	
@@ -93,15 +123,31 @@ public class main {
 			System.out.println("Esta en stock?\n0:NO\t1:SI");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setStock(Integer.parseUnsignedInt(in.readLine()));
 			
-			//Control errores while
+			while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getStock() > 1 || almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getStock() < 0) {
+				System.out.println("Por favor introduce un valor entre 0 y 1");
+				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setStock(Integer.parseUnsignedInt(in.readLine()));
+			}
+			
 			if(almacen.getPedidos().get(almacen.getPedidos().size() -1 ).products.get(i).getStock() == 1) {
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setLocalizacion(new Localizacion());
 				System.out.println("Esta en el pasillo?\n0:NO\t1:SI");
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
+				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() >1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() < 0 ) {
+					System.out.println("Por favor introduce un valor entre 0 y 1");
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
+				}
 				System.out.println("Esta en una estanteria?\n0:NO\t1:SI");
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));				
+				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
+				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf()> 1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf() < 0) {
+					System.out.println("Por favor introduzca un valor entre 0 y 1");
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
+				}
 				System.out.println("Esta en un estante?\n0:NO\t1:SI");
 				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
+				while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving()>1 || almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving() < 0) {
+					System.out.println("Por favor introduzca un valor entre 0 y 1");
+					almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
+				}
 				
 			}else {
 				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setLocalizacion(new Localizacion());
@@ -112,6 +158,10 @@ public class main {
 			
 			System.out.println("Esta Pendiente?\n0:NO\t1:SI");
 			almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
+			while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending()> 1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending() < 0) {
+				System.out.println("Por favor introduzca un valor entre 0 y 1");
+				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
+			}
 			System.out.println("Cantidad?");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).quantity.add(Integer.parseUnsignedInt(in.readLine()));
 			almacen.getProducts().add((almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i)));
@@ -144,6 +194,10 @@ public class main {
 		
 		System.out.println("Es la misma direccion que la direccion de entrega?\n0:NO\t1:SI");
 		int respuesta = Integer.parseUnsignedInt(in.readLine());
+		while(respuesta > 1 || respuesta < 0) {
+			System.out.println("Por favor introduzca un valo entre 0 y 1");
+			respuesta = Integer.parseUnsignedInt(in.readLine());
+		}
 		if(respuesta == 0) {
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).setDelivery_address(new Direccion());
 			System.out.println("Introduzca la calle");
@@ -168,11 +222,23 @@ public class main {
 								
 	}
 	
-	public static void RecuperarPedido() {
+	public static Almacen RecuperarPedido(Almacen almacen, File xmlFile) {
+		
+		JAXBContext jaxbContext;
+			
+		try {
+			jaxbContext = JAXBContext.newInstance(Almacen.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();  
+			almacen = (Almacen) jaxbUnmarshaller.unmarshal(xmlFile);
+			return almacen;
+				
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		return almacen;  
 		
 	}
-
-	
 	
 	public static void GuardarPedidos(Almacen almacen) throws FileNotFoundException {
 		
