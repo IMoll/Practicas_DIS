@@ -3,47 +3,60 @@
     <clientes>
         <direccion>
             <number>23</number>
-            <population>Espana</population>
-            <postal_code>28005</postal_code>
-            <street>Narnia</street>
+            <population>es</population>
+            <postal_code>343</postal_code>
+            <street>pas</street>
         </direccion>
-        <email>fnewifw@muyzorr</email>
-        <name>paula</name>
-        <phone_number>293823</phone_number>
+        <email>ewfgwe</email>
+        <name>carlos</name>
+        <phone_number>343</phone_number>
         <surname>tendero</surname>
     </clientes>
     <pedidos>
         <client>
             <direccion>
                 <number>23</number>
-                <population>Espana</population>
-                <postal_code>28005</postal_code>
-                <street>Narnia</street>
+                <population>es</population>
+                <postal_code>343</postal_code>
+                <street>pas</street>
             </direccion>
-            <email>fnewifw@muyzorr</email>
-            <name>paula</name>
-            <phone_number>293823</phone_number>
+            <email>ewfgwe</email>
+            <name>carlos</name>
+            <phone_number>343</phone_number>
             <surname>tendero</surname>
         </client>
         <delivery_address>
             <number>23</number>
-            <population>Espana</population>
-            <postal_code>28005</postal_code>
-            <street>Narnia</street>
+            <population>es</population>
+            <postal_code>343</postal_code>
+            <street>pas</street>
         </delivery_address>
-        <estimated_date>2020-03-13T12:54:49.293+01:00</estimated_date>
+        <destinatario>efe</destinatario>
+        <estimated_date>2020-03-13T15:11:26.071+01:00</estimated_date>
         <products>
-            <code>2</code>
-            <description>dulce</description>
+            <code>11</code>
+            <description>ww</description>
             <localizacion>
                 <hall>1</hall>
                 <shelf>1</shelf>
                 <shelving>1</shelving>
             </localizacion>
-            <name>comida</name>
+            <name>1</name>
             <pending>1</pending>
             <stock>1</stock>
         </products>
-        <quantity>10</quantity>
+        <quantity>1</quantity>
     </pedidos>
+    <products>
+        <code>11</code>
+        <description>ww</description>
+        <localizacion>
+            <hall>1</hall>
+            <shelf>1</shelf>
+            <shelving>1</shelving>
+        </localizacion>
+        <name>1</name>
+        <pending>1</pending>
+        <stock>1</stock>
+    </products>
 </almacen>
