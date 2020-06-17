@@ -31,13 +31,14 @@ public class main {
 			
 			
 			try {
-			
-				System.out.println("1:Realizar un nuevo Pedido");
-				System.out.println("2:Recuperar Pedido");
-				System.out.println("3:Guardar Pedidos");
-				System.out.println("4:Insertar Producto");
-				System.out.println("5:Insertar Cliente");
-				System.out.println("0:Salir");
+				System.out.println("\nGestion del Almacen");
+				System.out.println("--------------------------------------------");
+				System.out.println("1:Tramitar nuevos pedidos para el Almacen.");
+				System.out.println("2:Recuperar Pedidos (Cargar XML).");
+				System.out.println("3:Guardar Pedidos (Guardar XML).");
+				System.out.println("4:Insertar nuevo Producto al Almacen.");
+				System.out.println("5:Insertar nuevo Cliente.");
+				System.out.println("0:Salir.");
 				//Leemos por pantalla
 				leido = in.readLine();
 				while(!tryParseInt(leido)) {
@@ -57,10 +58,10 @@ public class main {
 					File xmlFile = new File("almacen.xml");
 					if(xmlFile.exists()) {
 						almacen = RecuperarPedido(almacen, xmlFile);
+						System.out.println("Se ha cargado correctamente");
 					}
 					else {
 						System.out.println("No hay nada que cargar");
-						System.out.println("Se ha cargado correctamente");
 					}					
 				}
 						
@@ -107,18 +108,20 @@ public class main {
 	
 	public static void RealizarNuevoPedido(BufferedReader in, int num_productos, Calendar fecha_estimada, Almacen almacen) throws NumberFormatException, IOException
 	{
-		System.out.println("Generando nuevo pedido");
+		System.out.println("Procesando nuevos pedidos...");
 		almacen.getPedidos().add(new Pedidos());
 
-		System.out.println("Cuantos productos va a pedir?");
+		System.out.println("Cuantos productos distintos va a pedir?");
 		num_productos = Integer.parseUnsignedInt(in.readLine());			
-		for(int i = 0; i < num_productos; i++) {					
+		for(int i = 0; i < num_productos; i++) {
+			System.out.println("Producto "+(i+1)+".");
+			System.out.println("----------------------------------------------------------");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.add(new Producto());
-			System.out.println("Introduzca el codigo del producto");
+			System.out.println("Introduzca el codigo del producto a comprar");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setCode(Integer.parseInt(in.readLine()));
-			System.out.println("Introduzca el nombre del producto");
+			System.out.println("Introduzca el nombre del producto a comprar");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setName(in.readLine());
-			System.out.println("Introduzca la descripcion del producto");
+			System.out.println("Introduzca la descripcion del producto a registrar");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setDescription(in.readLine());
 			System.out.println("Esta en stock?\n0:NO\t1:SI");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setStock(Integer.parseUnsignedInt(in.readLine()));
@@ -130,22 +133,22 @@ public class main {
 			
 			if(almacen.getPedidos().get(almacen.getPedidos().size() -1 ).products.get(i).getStock() == 1) {
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setLocalizacion(new Localizacion());
-				System.out.println("Esta en el pasillo?\n0:NO\t1:SI");
+				System.out.println("En que pasillo está?");
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
-				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() >1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() < 0 ) {
-					System.out.println("Por favor introduce un valor entre 0 y 1");
+				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() < 0) {
+					System.out.println("Por favor introduce un valor numerico valido");
 					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
 				}
-				System.out.println("Esta en una estanteria?\n0:NO\t1:SI");
+				System.out.println("En que estanteria esta?");
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
-				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf()> 1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf() < 0) {
-					System.out.println("Por favor introduzca un valor entre 0 y 1");
+				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf() < 0) {
+					System.out.println("Por favor introduzca un valor numerico valido");
 					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
 				}
-				System.out.println("Esta en un estante?\n0:NO\t1:SI");
+				System.out.println("En que estante esta?");
 				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
-				while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving()>1 || almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving() < 0) {
-					System.out.println("Por favor introduzca un valor entre 0 y 1");
+				while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving() < 0) {
+					System.out.println("Por favor introduzca un valor numerico valido");
 					almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
 				}
 				
@@ -156,13 +159,13 @@ public class main {
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelving(0);
 			}
 			
-			System.out.println("Esta Pendiente?\n0:NO\t1:SI");
+			System.out.println("Hay productos pendientes de llegar?\n0:NO\t1:SI");
 			almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
 			while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending()> 1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending() < 0) {
 				System.out.println("Por favor introduzca un valor entre 0 y 1");
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
 			}
-			System.out.println("Cantidad?");
+			System.out.println("Introduzca las unidades de este producto (Cantidad):");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).quantity.add(Integer.parseUnsignedInt(in.readLine()));
 			almacen.getProducts().add((almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i)));
 		}
@@ -276,7 +279,7 @@ public class main {
 		
 		System.out.println("Esta en stock?\n0:NO\t1:SI");
 		leido = in.readLine();
-		while(!tryParseInt(leido)) {
+		while(!tryParseInt0o1(leido)) {
 			System.out.println("Esta en stock?\n0:NO\t1:SI");
 			leido = in.readLine();
 		}
@@ -286,26 +289,26 @@ public class main {
 		if(producto_aux.getStock() == 1) {
 			producto_aux.setLocalizacion(new Localizacion());
 			
-			System.out.println("Esta en el pasillo?\n0:NO\t1:SI");
+			System.out.println("En que pasillo esta?");
 			leido = in.readLine();
 			while(!tryParseInt(leido)) {
-				System.out.println("Esta en el pasillo?\n0:NO\t1:SI");
+				System.out.println("Introduzca un valor numerico valido.");
 				leido = in.readLine();
 			}
 			producto_aux.getLocalizacion().setHall(Integer.parseUnsignedInt(leido));
 			
-			System.out.println("Esta en una estanteria?\n0:NO\t1:SI");
+			System.out.println("En que estanteria esta?");
 			leido = in.readLine();
 			while(!tryParseInt(leido)) {
-				System.out.println("Esta en una estanteria?\n0:NO\t1:SI");
+				System.out.println("Introduzca un valor numerico valido.");
 				leido = in.readLine();
 			}
 			producto_aux.getLocalizacion().setShelf(Integer.parseUnsignedInt(leido));
 			
-			System.out.println("Esta en un estante?\n0:NO\t1:SI");
+			System.out.println("En que estante esta?");
 			leido = in.readLine();
 			while(!tryParseInt(leido)) {
-				System.out.println("Esta en un estante?\n0:NO\t1:SI");
+				System.out.println("Introduzca un valor numerico valido.");
 				leido = in.readLine();
 			}
 			producto_aux.getLocalizacion().setShelving(Integer.parseUnsignedInt(leido));
@@ -318,10 +321,10 @@ public class main {
 			producto_aux.getLocalizacion().setShelving(0);
 		}
 		
-		System.out.println("Esta Pendiente?\n0:NO\t1:SI");
+		System.out.println("Hay productos pendientes de llegar?\n0:NO\t1:SI");
 		leido = in.readLine();
-		while(!tryParseInt(leido)) {
-			System.out.println("Esta Pendiente?\n0:NO\t1:SI");
+		while(!tryParseInt0o1(leido)) {
+			System.out.println("Hay productos pendientes de llegar?\n0:NO\t1:SI");
 			leido = in.readLine();
 		}
 		producto_aux.setPending(Integer.parseUnsignedInt(leido));
@@ -386,6 +389,18 @@ public class main {
 	     try {  
 	         Integer.parseUnsignedInt(value);  
 	         return true;  
+	      } catch (NumberFormatException e) {  
+	         return false;  
+	      }  
+	}
+	
+	public static boolean tryParseInt0o1(String value) {  
+	     try {  
+	          int valor = Integer.parseUnsignedInt(value);
+	         if(valor<=1 && valor>=0)
+	        	 return true;
+	         else
+	        	 return false;  
 	      } catch (NumberFormatException e) {  
 	         return false;  
 	      }  
