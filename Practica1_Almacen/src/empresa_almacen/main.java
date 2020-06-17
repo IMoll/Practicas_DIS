@@ -99,7 +99,7 @@ public class main {
 				br.readLine();
 			}
 			catch(OutOfMemoryError e) {
-				System.out.println("Amigo, tienes un problema de memoria, de nada");
+				System.out.println("Error, no tienes memoria suficiente");
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				br.readLine();
 			}
@@ -198,7 +198,7 @@ public class main {
 		System.out.println("Es la misma direccion que la direccion de entrega?\n0:NO\t1:SI");
 		int respuesta = Integer.parseUnsignedInt(in.readLine());
 		while(respuesta > 1 || respuesta < 0) {
-			System.out.println("Por favor introduzca un valo entre 0 y 1");
+			System.out.println("Por favor introduzca un valor entre 0 y 1");
 			respuesta = Integer.parseUnsignedInt(in.readLine());
 		}
 		if(respuesta == 0) {
@@ -221,7 +221,7 @@ public class main {
 		almacen.getPedidos().get(almacen.getPedidos().size()-1).setDestinatario(in.readLine());
 
 		almacen.getPedidos().get(almacen.getPedidos().size()-1).setEstimated_date(fecha_estimada.getTime());
-		System.out.println("Pedido generado bien");
+		System.out.println("Pedido generado correctamente");
 								
 	}
 	
@@ -277,10 +277,12 @@ public class main {
 		System.out.println("Introduzca la descripcion del producto");
 		producto_aux.setDescription(in.readLine());
 		
-		System.out.println("Esta en stock?\n0:NO\t1:SI");
+		System.out.println("¿Esta en stock?\n0:NO\t1:SI");
 		leido = in.readLine();
+
 		while(!tryParseInt0o1(leido)) {
 			System.out.println("Esta en stock?\n0:NO\t1:SI");
+
 			leido = in.readLine();
 		}
 		producto_aux.setStock(Integer.parseUnsignedInt(leido));
