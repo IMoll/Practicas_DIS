@@ -71,12 +71,9 @@ public class Clientes {
 	/*-------------------------------------------------------*/
 	@Override
 	public String toString() {
-		return "Clientes ["+ "\n" + "name=" + name + "\n" + ", surname=" + surname + "\n"+ ", email=" + email + "\n" + ", phone_number=" + phone_number
-				+"\n" + ", direccion=" + direccion + "\n" +"]" + "\n";
+		return "\n" + "Name = " + name + "\n" + "Surname = " + surname + "\n"+ "Email = " + email + "\n" + "Phone_number = " + phone_number
+				+"\n" + "Direccion = " + direccion + "-----------------------------" + "\n";
 	}					  /*+ direccion.toString()*/
-	
-	
-	
 }
 
 

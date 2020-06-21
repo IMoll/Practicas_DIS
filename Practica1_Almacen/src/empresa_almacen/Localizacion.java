@@ -52,7 +52,7 @@ public class Localizacion {
 	
 	@Override
 	public String toString() {
-		return "Localizacion ["+ "\n" + "hall=" + hall + "\n" + ", shelving=" + shelving + "\n"+ ", shelf=" + shelf + "\n" +"]" + "\n";
+		return "\n[\t" + "Hall = " + hall + "\n\t" + "Shelving = " + shelving + "\n\t"+ "Shelf = " + shelf + "\n" +"]";
 	}
 	
 	

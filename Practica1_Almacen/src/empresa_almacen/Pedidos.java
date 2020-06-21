@@ -14,6 +14,7 @@ public class Pedidos {
 	ArrayList<Producto> products = new ArrayList<Producto>();
 	ArrayList<Integer> quantity = new ArrayList<Integer>();
 	private Direccion delivery_address;
+	/*Borrar el cliente, no lo pide*/
 	private Clientes client;
 	private String destinatario;
 	private Date estimated_date = new Date();
@@ -89,8 +90,8 @@ public class Pedidos {
 	/*-----------------------------*/
 	@Override
 	public String toString() {
-		return "Pedidos ["+ "\n" + "products=" + products + "\n"+", quantity=" + quantity + "\n"+", delivery_address=" + delivery_address
-				+ "\n" + ", client=" + client +"\n" + ", destinatario=" + destinatario +"\n"+", estimated_date=" + estimated_date +"\n"+"]"+"\n";
+		return "\n" + "Products = " + products + "\n"+"Quantity = " + quantity + "\n"+"Delivery_address = " + delivery_address
+				+ "\n" + "Client = " + client +"\n" + "Destinatario = " + destinatario +"\n"+"Estimated_date = " + estimated_date +"\n-------------------------------------------"+"\n";
 	}						/*client.toString()*/ 
 	
 	
