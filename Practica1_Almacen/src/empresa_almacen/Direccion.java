@@ -75,8 +75,8 @@ public class Direccion {
 	/*------------------------------------------------*/
 	@Override
 	public String toString() {
-		return "Direccion [" + "\n" + "street=" + street + "\n"  + ", number=" + number +"\n" + ", postal_code=" + postal_code +"\n"+ ", population="
-				+ population + "\n" + ", country=" + country + "\n" +"]" + "\n";
+		return "\n[\t" + "Street = " + street + "\n\t"  + "Number = " + number +"\n\t" + "Postal_code = " + postal_code +"\n\t"+ "Population = "
+				+ population + "\n\t" + "Country = " + country + "\n" +"]" + "\n";
 	}
 	
 	

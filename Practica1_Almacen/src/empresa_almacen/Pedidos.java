@@ -14,7 +14,6 @@ public class Pedidos {
 	ArrayList<Producto> products = new ArrayList<Producto>();
 	ArrayList<Integer> quantity = new ArrayList<Integer>();
 	private Direccion delivery_address;
-	private Clientes client;
 	private String destinatario;
 	private Date estimated_date = new Date();
 	
@@ -28,7 +27,6 @@ public class Pedidos {
 		this.products = products;
 		this.quantity = quantity;
 		this.delivery_address = delivery_address;
-		this.client = client;
 		this.estimated_date = estimated_date;
 	}
 	
@@ -59,14 +57,6 @@ public class Pedidos {
 		this.delivery_address = delivery_address;
 	}
 
-	@XmlElement
-	public Clientes getClient() {
-		return client;
-	}
-
-	public void setClient(Clientes client) {
-		this.client = client;
-	}
 
 	@XmlElement
 	public Date getEstimated_date() {
@@ -89,8 +79,8 @@ public class Pedidos {
 	/*-----------------------------*/
 	@Override
 	public String toString() {
-		return "Pedidos ["+ "\n" + "products=" + products + "\n"+", quantity=" + quantity + "\n"+", delivery_address=" + delivery_address
-				+ "\n" + ", client=" + client +"\n" + ", destinatario=" + destinatario +"\n"+", estimated_date=" + estimated_date +"\n"+"]"+"\n";
+		return "\n" + "Products = " + products + "\n"+"Quantity = " + quantity + "\n"+"Delivery_address = " + delivery_address
+				+ "\n" + "Destinatario = " + destinatario +"\n"+"Estimated_date = " + estimated_date +"\n-------------------------------------------"+"\n";
 	}						/*client.toString()*/ 
 	
 	
