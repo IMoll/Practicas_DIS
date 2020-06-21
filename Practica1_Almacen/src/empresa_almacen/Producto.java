@@ -85,8 +85,8 @@ public class Producto {
 	/*------------------------------*/
 	@Override
 	public String toString() {
-		return "Producto ["+ "\n" + "code=" + code + "\n" + ", name=" + name +"\n" + ", description=" + description + "\n"+", stock=" + stock
-				+"\n"+", localizacion=" + localizacion + "\n"+", pending=" + pending + "\n"+"]"+"\n";
+		return "\n" + "Code = " + code + "\n" + "Name = " + name +"\n" + "Description = " + description + "\n"+"Stock = " + stock
+				+"\n"+"Localizacion = " + localizacion + "\n"+"Pending = " + pending + "\n------------------------------"+"\n";
 	}									/*localizacion.toString()*/
 	
 	

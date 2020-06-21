@@ -40,6 +40,7 @@ public class main {
 				System.out.println("5:Insertar nuevo Cliente.");
 				System.out.println("6:Mostrar Clientes.");
 				System.out.println("7:Mostrar Productos.");
+				System.out.println("8:Mostrar Pedidos.");
 				System.out.println("0:Salir.");
 				//Leemos por pantalla
 				leido = in.readLine();
@@ -59,9 +60,9 @@ public class main {
 				else if(opcion == 2) {
 					File xmlFile = new File("almacen.xml");
 					if(xmlFile.exists()) {
-						almacen = RecuperarPedido(almacen, xmlFile);
-						System.out.println("Se ha cargado correctamente");
+						almacen = RecuperarPedido(almacen, xmlFile);					
 						System.out.println(almacen.toString());
+						System.out.println("\nSe ha cargado correctamente");
 					}
 					else {
 						System.out.println("No hay nada que cargar");
@@ -88,19 +89,34 @@ public class main {
 				/*Mostrar Clientes*/
 				else if(opcion == 6) {
 					if(almacen.getClientes().size()!=0) {
+						System.out.println("\n\nClientes");
+						System.out.println("-----------------------------");
 						System.out.println(almacen.getClientes().toString());
 					}
 					else {
-						System.out.println("No hay usuarios que cargar");
+						System.out.println("No hay usuarios que mostrar");
 					}
 				}
 				/*Mostrar Productos*/
 				else if(opcion == 7) {
 					if(almacen.getProducts().size()!=0) {
+						System.out.println("\n\nProductos");
+						System.out.println("-----------------------------");
 						System.out.println(almacen.getProducts().toString());
 					}				
 					else {
 						System.out.println("No hay productos que mostrar");
+					}
+				}
+				/*Mostrar Pedidos*/
+				else if(opcion == 8) {
+					if(almacen.getPedidos().size()!=0) {
+						System.out.println("\n\nPedidos");
+						System.out.println("-----------------------------");
+						System.out.println(almacen.getPedidos().toString());
+					}				
+					else {
+						System.out.println("No hay pedidos que mostrar");
 					}
 				}
 				

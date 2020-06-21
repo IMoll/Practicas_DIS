@@ -54,7 +54,19 @@ public class Almacen {
 
 	@Override
 	public String toString() {
-		return "Almacen [" + "\n " + "clientes=" + clientes + "\n" + ", products=" + products +"\n" + ", pedidos=" + pedidos + "\n"+ "]" + "\n";
+		return "\n--------------------------\nAlmacen:\n--------------------------\n" +
+	"\n**************************\n"
+	+ "Clientes:\n"
+	+ "**************************\n\n"
+	+ clientes 
+	+"\n**************************"
+	+ "\n" + "Productos:\n" 
+	+"**************************\n\n"
+	+ products +"\n" 
+	+"\n**************************\n"
+	+ "Pedidos:\n" 
+	+"**************************\n\n"
+	+ pedidos + "\n\n";
 	}
 	
 	
