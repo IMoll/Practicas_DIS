@@ -72,4 +72,13 @@ public class Direccion {
 		
 	}
 
+	/*------------------------------------------------*/
+	@Override
+	public String toString() {
+		return "\n[\t" + "Street = " + street + "\n\t"  + "Number = " + number +"\n\t" + "Postal_code = " + postal_code +"\n\t"+ "Population = "
+				+ population + "\n\t" + "Country = " + country + "\n" +"]" + "\n";
+	}
+	
+	
+
 }

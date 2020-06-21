@@ -51,4 +51,25 @@ public class Almacen {
 		this.products = products;
 		this.pedidos = pedidos;
 	}
+
+	@Override
+	public String toString() {
+		return "\n--------------------------\nAlmacen:\n--------------------------\n" +
+	"\n**************************\n"
+	+ "Clientes:\n"
+	+ "**************************\n\n"
+	+ clientes 
+	+"\n\n**************************"
+	+ "\n" + "Productos:\n" 
+	+"**************************\n\n"
+	+ products +"\n" 
+	+"\n**************************\n"
+	+ "Pedidos:\n" 
+	+"**************************\n\n"
+	+ pedidos + "\n\n";
+	}
+	
+	
+	
+	
 }
