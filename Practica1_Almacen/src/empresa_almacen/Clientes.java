@@ -17,7 +17,6 @@ public class Clientes {
 	public Clientes() {
 		
 	}
-	
 	public Clientes(String name, String surname, String email, String phone_number, Direccion direccion) {
 		
 		this.name = name;
@@ -27,7 +26,6 @@ public class Clientes {
 		this.direccion = direccion;
 		
 	}
-	
 	@XmlElement
 	public String getName() {
 		return name;
