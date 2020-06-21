@@ -145,102 +145,73 @@ public class main {
 	
 	public static void RealizarNuevoPedido(BufferedReader in, int num_productos, Calendar fecha_estimada, Almacen almacen) throws NumberFormatException, IOException
 	{
-		System.out.println("Procesando nuevos pedidos...");
-		almacen.getPedidos().add(new Pedidos());
-
-		System.out.println("Cuantos productos distintos va a pedir?");
-		num_productos = Integer.parseUnsignedInt(in.readLine());			
-		for(int i = 0; i < num_productos; i++) {
-			System.out.println("Producto "+(i+1)+".");
-			System.out.println("----------------------------------------------------------");
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.add(new Producto());
-			System.out.println("Introduzca el codigo del producto a comprar");
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setCode(Integer.parseInt(in.readLine()));
-			System.out.println("Introduzca el nombre del producto a comprar");
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setName(in.readLine());
-			System.out.println("Introduzca la descripcion del producto a registrar");
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setDescription(in.readLine());
-			System.out.println("Esta en stock?\n0:NO\t1:SI");
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setStock(Integer.parseUnsignedInt(in.readLine()));
-			
-			while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getStock() > 1 || almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getStock() < 0) {
-				System.out.println("Por favor introduce un valor entre 0 y 1");
+		try {
+			System.out.println("Procesando nuevos pedidos...");
+			almacen.getPedidos().add(new Pedidos());
+	
+			System.out.println("Cuantos productos distintos va a pedir?");
+			num_productos = Integer.parseUnsignedInt(in.readLine());			
+			for(int i = 0; i < num_productos; i++) {
+				System.out.println("Producto "+(i+1)+".");
+				System.out.println("----------------------------------------------------------");
+				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.add(new Producto());
+				System.out.println("Introduzca el codigo del producto a comprar");
+				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setCode(Integer.parseInt(in.readLine()));
+				System.out.println("Introduzca el nombre del producto a comprar");
+				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setName(in.readLine());
+				System.out.println("Introduzca la descripcion del producto a registrar");
+				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setDescription(in.readLine());
+				System.out.println("Esta en stock?\n0:NO\t1:SI");
 				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setStock(Integer.parseUnsignedInt(in.readLine()));
-			}
-			
-			if(almacen.getPedidos().get(almacen.getPedidos().size() -1 ).products.get(i).getStock() == 1) {
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setLocalizacion(new Localizacion());
-				System.out.println("En que pasillo está?");
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
-				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() < 0) {
-					System.out.println("Por favor introduce un valor numerico valido");
-					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
-				}
-				System.out.println("En que estanteria esta?");
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
-				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf() < 0) {
-					System.out.println("Por favor introduzca un valor numerico valido");
-					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
-				}
-				System.out.println("En que estante esta?");
-				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
-				while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving() < 0) {
-					System.out.println("Por favor introduzca un valor numerico valido");
-					almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
+				
+				while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getStock() > 1 || almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getStock() < 0) {
+					System.out.println("Por favor introduce un valor entre 0 y 1");
+					almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setStock(Integer.parseUnsignedInt(in.readLine()));
 				}
 				
-			}else {
-				almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setLocalizacion(new Localizacion());
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(0);
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(0);
-				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelving(0);
-			}
-			
-			System.out.println("Hay productos pendientes de llegar?\n0:NO\t1:SI");
-			almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
-			while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending()> 1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending() < 0) {
-				System.out.println("Por favor introduzca un valor entre 0 y 1");
+				if(almacen.getPedidos().get(almacen.getPedidos().size() -1 ).products.get(i).getStock() == 1) {
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setLocalizacion(new Localizacion());
+					System.out.println("En que pasillo está?");
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
+					while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getHall() < 0) {
+						System.out.println("Por favor introduce un valor numerico valido");
+						almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(Integer.parseUnsignedInt(in.readLine()));
+					}
+					System.out.println("En que estanteria esta?");
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
+					while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().getShelf() < 0) {
+						System.out.println("Por favor introduzca un valor numerico valido");
+						almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(Integer.parseUnsignedInt(in.readLine()));
+					}
+					System.out.println("En que estante esta?");
+					almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
+					while(almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().getShelving() < 0) {
+						System.out.println("Por favor introduzca un valor numerico valido");
+						almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).getLocalizacion().setShelving(Integer.parseUnsignedInt(in.readLine()));
+					}
+					
+				}else {
+					almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i).setLocalizacion(new Localizacion());
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setHall(0);
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelf(0);
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getLocalizacion().setShelving(0);
+				}
+				
+				System.out.println("Hay productos pendientes de llegar?\n0:NO\t1:SI");
 				almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
+				while(almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending()> 1 || almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).getPending() < 0) {
+					System.out.println("Por favor introduzca un valor entre 0 y 1");
+					almacen.getPedidos().get(almacen.getPedidos().size() -1).products.get(i).setPending(Integer.parseUnsignedInt(in.readLine()));
+				}
+				System.out.println("Introduzca las unidades de este producto (Cantidad):");
+				almacen.getPedidos().get(almacen.getPedidos().size()-1).quantity.add(Integer.parseUnsignedInt(in.readLine()));
+				almacen.getProducts().add((almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i)));
 			}
-			System.out.println("Introduzca las unidades de este producto (Cantidad):");
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).quantity.add(Integer.parseUnsignedInt(in.readLine()));
-			almacen.getProducts().add((almacen.getPedidos().get(almacen.getPedidos().size()-1).products.get(i)));
-		}
-
-		System.out.println("Introduzca el nombre del cliente");
-		almacen.getClientes().add(new Clientes());
-		almacen.getClientes().get(almacen.getClientes().size()-1).setName(in.readLine());
-		System.out.println("Introduzca los apellidos del cliente");
-		almacen.getClientes().get(almacen.getClientes().size() -1).setSurname(in.readLine());
-		System.out.println("Introduzca el email del cliente");
-		almacen.getClientes().get(almacen.getClientes().size() -1).setEmail(in.readLine());
-		System.out.println("Introduzca el telefono de contacto");
-		almacen.getClientes().get(almacen.getClientes().size() -1).setPhone_number(in.readLine());
-		System.out.println("Introduzca la direccion del cliente");
-		almacen.getClientes().get(almacen.getClientes().size() -1).setDireccion(new Direccion());
-		System.out.println("Introduzca la calle");
-		almacen.getClientes().get(almacen.getClientes().size() -1).getDireccion().setStreet(in.readLine());
-		System.out.println("Numero de la calle");
-		almacen.getClientes().get(almacen.getClientes().size()-1).getDireccion().setNumber(Integer.parseUnsignedInt(in.readLine()));
-		System.out.println("Codigo postal");
-		almacen.getClientes().get(almacen.getClientes().size()-1).getDireccion().setPostal_code(Integer.parseUnsignedInt(in.readLine()));
-		System.out.println("Poblacion");
-		almacen.getClientes().get(almacen.getClientes().size()-1).getDireccion().setPopulation(in.readLine());
-		System.out.println("Pais");
-		almacen.getClientes().get(almacen.getClientes().size()-1).getDireccion().setPopulation(in.readLine());
-						
-		almacen.getPedidos().get(almacen.getPedidos().size() -1).setClient(almacen.getClientes().get(almacen.getClientes().size()-1));
-		
-		
-		System.out.println("Es la misma direccion que la direccion de entrega?\n0:NO\t1:SI");
-		int respuesta = Integer.parseUnsignedInt(in.readLine());
-		while(respuesta > 1 || respuesta < 0) {
-			System.out.println("Por favor introduzca un valor entre 0 y 1");
-			respuesta = Integer.parseUnsignedInt(in.readLine());
-		}
-		if(respuesta == 0) {
+	
+			System.out.println("Introduzca los datos de la entrega:");	
+			
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).setDelivery_address(new Direccion());
-			System.out.println("Introduzca la calle");
+			System.out.println("Nombre de la calle");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).getDelivery_address().setStreet(in.readLine());
 			System.out.println("Numero de la calle");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).getDelivery_address().setNumber(Integer.parseUnsignedInt(in.readLine()));
@@ -250,16 +221,18 @@ public class main {
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).getDelivery_address().setPopulation(in.readLine());
 			System.out.println("Pais");
 			almacen.getPedidos().get(almacen.getPedidos().size()-1).getDelivery_address().setCountry(in.readLine());
+			
+			System.out.println("Nombre del Destinatario");
+			almacen.getPedidos().get(almacen.getPedidos().size()-1).setDestinatario(in.readLine());
+	
+			almacen.getPedidos().get(almacen.getPedidos().size()-1).setEstimated_date(fecha_estimada.getTime());
+			System.out.println("\nPedido generado correctamente");
 		}
-		else if(respuesta == 1) {
-			almacen.getPedidos().get(almacen.getPedidos().size()-1).setDelivery_address(almacen.getClientes().get(almacen.getClientes().size()-1).getDireccion());
-		}
-		System.out.println("Destinatario");
-		almacen.getPedidos().get(almacen.getPedidos().size()-1).setDestinatario(in.readLine());
-
-		almacen.getPedidos().get(almacen.getPedidos().size()-1).setEstimated_date(fecha_estimada.getTime());
-		System.out.println("Pedido generado correctamente");
-								
+		catch(Exception E)
+		{
+			System.out.println("\nNo se ha podido guardar el producto.\n");
+			almacen.getPedidos().remove(almacen.getPedidos().size()-1);
+		}								
 	}
 	
 	public static Almacen RecuperarPedido(Almacen almacen, File xmlFile) {
