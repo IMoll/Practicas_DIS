@@ -38,6 +38,8 @@ public class main {
 				System.out.println("3:Guardar Pedidos (Guardar XML).");
 				System.out.println("4:Insertar nuevo Producto al Almacen.");
 				System.out.println("5:Insertar nuevo Cliente.");
+				System.out.println("6:Mostrar Clientes.");
+				System.out.println("7:Mostrar Productos.");
 				System.out.println("0:Salir.");
 				//Leemos por pantalla
 				leido = in.readLine();
@@ -82,6 +84,24 @@ public class main {
 				/*CrearCliente*/
 				else if(opcion == 5) {
 					CrearCliente(in, almacen.getClientes());
+				}
+				/*Mostrar Clientes*/
+				else if(opcion == 6) {
+					if(almacen.getClientes().size()!=0) {
+						System.out.println(almacen.getClientes().toString());
+					}
+					else {
+						System.out.println("No hay usuarios que cargar");
+					}
+				}
+				/*Mostrar Productos*/
+				else if(opcion == 7) {
+					if(almacen.getProducts().size()!=0) {
+						System.out.println(almacen.getProducts().toString());
+					}				
+					else {
+						System.out.println("No hay productos que mostrar");
+					}
 				}
 				
 				else if(opcion == 0) {

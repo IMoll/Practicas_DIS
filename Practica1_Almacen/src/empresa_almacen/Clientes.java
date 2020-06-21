@@ -73,7 +73,7 @@ public class Clientes {
 	public String toString() {
 		return "Clientes ["+ "\n" + "name=" + name + "\n" + ", surname=" + surname + "\n"+ ", email=" + email + "\n" + ", phone_number=" + phone_number
 				+"\n" + ", direccion=" + direccion + "\n" +"]" + "\n";
-	}
+	}					  /*+ direccion.toString()*/
 	
 	
 	

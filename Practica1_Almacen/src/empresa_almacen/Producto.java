@@ -87,7 +87,7 @@ public class Producto {
 	public String toString() {
 		return "Producto ["+ "\n" + "code=" + code + "\n" + ", name=" + name +"\n" + ", description=" + description + "\n"+", stock=" + stock
 				+"\n"+", localizacion=" + localizacion + "\n"+", pending=" + pending + "\n"+"]"+"\n";
-	}
+	}									/*localizacion.toString()*/
 	
 	
 	
