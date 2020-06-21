@@ -51,4 +51,13 @@ public class Almacen {
 		this.products = products;
 		this.pedidos = pedidos;
 	}
+
+	@Override
+	public String toString() {
+		return "Almacen [" + "\n " + "clientes=" + clientes + "\n" + ", products=" + products +"\n" + ", pedidos=" + pedidos + "\n"+ "]" + "\n";
+	}
+	
+	
+	
+	
 }

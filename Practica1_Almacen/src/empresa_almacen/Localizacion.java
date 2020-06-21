@@ -47,4 +47,13 @@ public class Localizacion {
 	public void setShelf(int shelf) {
 		this.shelf = shelf;
 	}
+	
+	/*----------------------------------------*/
+	
+	@Override
+	public String toString() {
+		return "Localizacion ["+ "\n" + "hall=" + hall + "\n" + ", shelving=" + shelving + "\n"+ ", shelf=" + shelf + "\n" +"]" + "\n";
+	}
+	
+	
 }

@@ -59,6 +59,7 @@ public class main {
 					if(xmlFile.exists()) {
 						almacen = RecuperarPedido(almacen, xmlFile);
 						System.out.println("Se ha cargado correctamente");
+						System.out.println(almacen.toString());
 					}
 					else {
 						System.out.println("No hay nada que cargar");

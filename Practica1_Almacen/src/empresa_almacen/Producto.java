@@ -81,4 +81,14 @@ public class Producto {
 	public void setPending(int pending) {
 		this.pending = pending;
 	}
+
+	/*------------------------------*/
+	@Override
+	public String toString() {
+		return "Producto ["+ "\n" + "code=" + code + "\n" + ", name=" + name +"\n" + ", description=" + description + "\n"+", stock=" + stock
+				+"\n"+", localizacion=" + localizacion + "\n"+", pending=" + pending + "\n"+"]"+"\n";
+	}
+	
+	
+	
 }

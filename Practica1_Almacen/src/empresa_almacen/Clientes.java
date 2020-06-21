@@ -67,4 +67,16 @@ public class Clientes {
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
+
+	/*-------------------------------------------------------*/
+	@Override
+	public String toString() {
+		return "Clientes ["+ "\n" + "name=" + name + "\n" + ", surname=" + surname + "\n"+ ", email=" + email + "\n" + ", phone_number=" + phone_number
+				+"\n" + ", direccion=" + direccion + "\n" +"]" + "\n";
+	}
+	
+	
+	
 }
+
+

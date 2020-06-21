@@ -85,5 +85,14 @@ public class Pedidos {
 	public void setDestinatario(String destinatario) {
 		this.destinatario = destinatario;
 	}
+
+	/*-----------------------------*/
+	@Override
+	public String toString() {
+		return "Pedidos ["+ "\n" + "products=" + products + "\n"+", quantity=" + quantity + "\n"+", delivery_address=" + delivery_address
+				+ "\n" + ", client=" + client +"\n" + ", destinatario=" + destinatario +"\n"+", estimated_date=" + estimated_date +"\n"+"]"+"\n";
+	}
+	
+	
 	
 }
